@@ -147,9 +147,9 @@ DELIMITER ;
 /*Procedimiento almacenado autenticarUsuario */
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_autenticarUsuario`(IN _nick VARCHAR(128), IN _contrasena VARCHAR(128))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_autenticarUsuario`(IN _correo VARCHAR(128), IN _contrasena VARCHAR(128))
     BEGIN
-	SELECT nombre, telefono, correo, nick FROM usuario WHERE usuario.`nick`=_nick AND usuario.`password`=MD5(_contrasena);
+	SELECT idUsuario, nombre, telefono, correo, nick FROM usuario WHERE usuario.`correo`=_correo AND usuario.`password`=MD5(_contrasena);
     END$$
 
 DELIMITER ;
